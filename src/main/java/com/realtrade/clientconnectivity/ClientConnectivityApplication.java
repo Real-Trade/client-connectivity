@@ -13,7 +13,7 @@ public class ClientConnectivityApplication {
 	@RequestMapping("/")
 	@ResponseBody
 	String home (){
-		return "Hello world";
+		return "Hello world"; //works
 	}
 	public static void main(String[] args) {
 		SpringApplication.run(ClientConnectivityApplication.class, args);
