@@ -11,4 +11,11 @@ public class ClientController {
         System.out.println("here");
         return "Hi everyone";
     }
+
+
+
+    @RequestMapping("/")
+    String home(){
+        return "Welcome to the home page";
+    }
 }
