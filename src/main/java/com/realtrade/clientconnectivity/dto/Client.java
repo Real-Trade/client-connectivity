@@ -6,7 +6,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "client",schema = "realtrading")
 public class Client {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="clientid")
@@ -15,9 +14,25 @@ public class Client {
     private String lastname;
     private String email;
     private String password;
+    private int status;
     private int accountnumber;
-//    @Column(name = "status")
-//    private int status;
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public int getAccountnumber() {
+        return accountnumber;
+    }
+
+    public void setAccountNumber(int accountnumber) {
+        this.accountnumber = accountnumber;
+    }
+
 
 
 

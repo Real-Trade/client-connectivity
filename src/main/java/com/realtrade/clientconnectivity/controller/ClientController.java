@@ -1,18 +1,17 @@
 package com.realtrade.clientconnectivity.controller;
 
+import com.realtrade.clientconnectivity.dto.Client;
+import com.realtrade.clientconnectivity.services.ClientDatabaseService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
 @RestController
 public class ClientController {
-    @RequestMapping("/hello")
-    String sayHi(){
-        System.out.println("here");
-        return "Hi everyone";
-    }
 
-
+    @Autowired
+    ClientDatabaseService clientDatabaseService;
 
     @RequestMapping("/")
     String home(){
@@ -20,12 +19,12 @@ public class ClientController {
     }
 
     @PostMapping("/register")
-    public String registerClient(@RequestBody Map<String,String> body){
+    public String registerClient(@RequestBody Client client){
+       return clientDatabaseService.register(client);
+    }
 
-        System.out.println(body.get("email"));
-
-        String email = body.get("email");
-
-        return "client registered";
+    @PostMapping("/login")
+    public String loginClient(@RequestBody Client client){
+        return clientDatabaseService.login(client.getEmail()) ;
     }
 }
