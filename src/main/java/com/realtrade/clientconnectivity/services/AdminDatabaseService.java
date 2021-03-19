@@ -12,11 +12,10 @@ public class AdminDatabaseService {
     private AdminDao adminDao;
 
     // makes a call to the admin repo passing in the email and returning a matching admin
-
     public String login(String email){
         Admin admin = new Admin();
         admin = adminDao.findByEmail(email);
-        if (admin!= null){
+        if (admin != null){
             return "login successful";
         }
         return "login unsuccessful";
@@ -26,8 +25,5 @@ public class AdminDatabaseService {
     public String register (Admin admin){
         adminDao.save(admin);
         return "successful registration";
-
     }
-
-
 }
