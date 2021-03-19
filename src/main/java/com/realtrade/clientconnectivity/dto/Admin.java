@@ -4,16 +4,6 @@ import javax.persistence.*;
     @Entity
     @Table(name = "admin",schema = "realtrading")
     public class Admin {
-//        @Id
-//        @SequenceGenerator(
-//                name = "admin_id_sequence",
-//                sequenceName = "admin_id_sequence",
-//                allocationSize = 1
-//        )
-//        @GeneratedValue(
-//                strategy = GenerationType.SEQUENCE,
-//                generator = "admin_id_sequence"
-//        )
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name="adminid")
@@ -22,8 +12,6 @@ import javax.persistence.*;
         private String lastname;
         private String email;
         private String password;
-
-
 
         public String toString() {
             return "Admin{" +
@@ -34,9 +22,6 @@ import javax.persistence.*;
                     ", password='" + this.password + '\'' +
                     '}';
         }
-
-
-
 
         public int getId() {
             return id;
@@ -77,13 +62,4 @@ import javax.persistence.*;
         public void setPassword(String password) {
             this.password = password;
         }
-
-
-
-
-
-
-
-
-
 }
