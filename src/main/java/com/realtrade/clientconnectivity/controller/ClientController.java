@@ -13,17 +13,20 @@ public class ClientController {
     @Autowired
     ClientDatabaseService clientDatabaseService;
 
+
+
     @RequestMapping("/")
     String home(){
         return "Welcome to the home page";
     }
 
-    @PostMapping("/register")
+
+    @PostMapping("client/register")
     public String registerClient(@RequestBody Client client){
        return clientDatabaseService.register(client);
     }
 
-    @PostMapping("/login")
+    @PostMapping("client/login")
     public String loginClient(@RequestBody Client client){
         return clientDatabaseService.login(client.getEmail()) ;
     }
