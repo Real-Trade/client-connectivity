@@ -25,13 +25,10 @@ public String login(String email){
 
 //TODO: handle case where registration is not successful
 public String register (Client client){
-//client.setAccountNumber(000000);
 client.setStatus(0);
 client.setAccountNumber(generateAccountNumber());
     clientDao.save(client);
-
     return "successful registration";
-
 }
 
 //logic to generate account number
