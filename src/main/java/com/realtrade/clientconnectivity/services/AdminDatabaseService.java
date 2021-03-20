@@ -2,7 +2,6 @@ package com.realtrade.clientconnectivity.services;
 
 import com.realtrade.clientconnectivity.dao.AdminDao;
 import com.realtrade.clientconnectivity.dto.Admin;
-import com.realtrade.clientconnectivity.dto.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

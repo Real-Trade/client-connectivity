@@ -1,6 +1,5 @@
 package com.realtrade.clientconnectivity.dto;
 
-
 import javax.persistence.*;
 
 @Entity
@@ -33,9 +32,6 @@ public class Client {
         this.accountnumber = accountnumber;
     }
 
-
-
-
     public String toString() {
         return "Client{" +
                 "id=" + id +
@@ -45,9 +41,6 @@ public class Client {
                 ", password='" + this.password + '\'' +
                 '}';
     }
-
-
-
 
     public int getId() {
         return id;

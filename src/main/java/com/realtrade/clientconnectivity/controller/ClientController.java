@@ -5,21 +5,16 @@ import com.realtrade.clientconnectivity.services.ClientDatabaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
-
 @RestController
 public class ClientController {
 
     @Autowired
     ClientDatabaseService clientDatabaseService;
 
-
-
     @RequestMapping("/")
     String home(){
         return "Welcome to the home page";
     }
-
 
     @PostMapping("client/register")
     public String registerClient(@RequestBody Client client){

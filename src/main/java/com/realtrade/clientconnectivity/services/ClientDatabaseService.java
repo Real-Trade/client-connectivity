@@ -4,7 +4,6 @@ import com.realtrade.clientconnectivity.dao.ClientDao;
 import com.realtrade.clientconnectivity.dto.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import static com.realtrade.clientconnectivity.validations.Validations.*;
 
 @Service
@@ -30,9 +29,6 @@ public String login(String email,String password){
     else return "error with login fields";
 }
 
-
-
-
 public String register (Client client){
     if (clientIsValid(client)){
         client.setStatus(0);
@@ -42,8 +38,6 @@ public String register (Client client){
     }
     return "error with fields passed";
 }
-
-
 
     //logic to generate account number
     int account =10000;
