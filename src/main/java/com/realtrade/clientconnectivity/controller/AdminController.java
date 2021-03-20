@@ -27,7 +27,7 @@ public class AdminController {
 
         @PostMapping("admin/login")
         public String loginClient(@RequestBody Admin admin) {
-            return adminDatabaseService.login(admin.getEmail());
+            return adminDatabaseService.login(admin.getEmail(),admin.getPassword());
         }
 
 

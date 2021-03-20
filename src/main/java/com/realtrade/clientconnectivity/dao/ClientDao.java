@@ -7,5 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 public interface ClientDao extends JpaRepository<Client,Integer> {
 
 Client findByEmail(String email);
+Client findByPassword(String password);
 
 }

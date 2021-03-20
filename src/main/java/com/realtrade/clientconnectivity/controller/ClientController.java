@@ -28,6 +28,6 @@ public class ClientController {
 
     @PostMapping("client/login")
     public String loginClient(@RequestBody Client client){
-        return clientDatabaseService.login(client.getEmail()) ;
+        return clientDatabaseService.login(client.getEmail(),client.getPassword()) ;
     }
 }
