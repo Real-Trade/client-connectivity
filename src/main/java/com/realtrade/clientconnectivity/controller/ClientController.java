@@ -17,12 +17,14 @@ public class ClientController {
     }
 
     @PostMapping("client/register")
-    public String registerClient(@RequestBody Client client){
+    @CrossOrigin("http://localhost:4200")
+    public Client registerClient(@RequestBody Client client)throws Exception{
        return clientDatabaseService.register(client);
     }
 
     @PostMapping("client/login")
-    public String loginClient(@RequestBody Client client){
+    @CrossOrigin("http://localhost:4200")
+    public Client loginClient(@RequestBody Client client)throws Exception{
         return clientDatabaseService.login(client.getEmail(),client.getPassword()) ;
     }
 }
