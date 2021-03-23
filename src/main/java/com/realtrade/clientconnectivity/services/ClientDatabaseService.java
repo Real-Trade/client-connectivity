@@ -5,6 +5,10 @@ import com.realtrade.clientconnectivity.dto.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import static com.realtrade.clientconnectivity.validations.Validations.*;
 
 @Service
@@ -51,11 +55,19 @@ public Client register (Client client) throws Exception{
        };
         client.setStatus(0);
         client.setAccountNumber(generateAccountNumber());
+        client.setCreated_at(setDate());
         return clientDao.save(client);
     }else{
+        System.out.println(client.toString());
         throw new Exception("Bad credentials");
     }
 }
+
+    private String setDate() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        return dtf.format(now);
+    }
 
     //logic to generate account number
     int account =10000;
