@@ -15,7 +15,7 @@ public abstract class Validations {
 
     //validate registration fields
     public static boolean clientIsValid(Client client) {
-        if (client.getEmail() != null && client.getFirstname() != null && client.getLastname()!= null && client.getPassword()!= null){
+        if (client.getEmail() != null && client.getFirst_name() != null && client.getLast_name()!= null && client.getPassword()!= null){
             return true;
         }
         return false;

@@ -14,28 +14,25 @@ public class AdminDatabaseService {
     private AdminDao adminDao;
 
     // makes a call to the admin repo passing in the email and returning a matching admin
-    public String login(String email,String password){
-        if (loginDetailIsValid(email,password) ){
-            Admin admin = new Admin();
-            admin =adminDao.findByEmail(email);
-            //admin email is in database
-            if (admin!= null){
-                if (admin.getPassword().equals(password)) {
-                    return "login successful";
-                }else {
-                    return "invalid password";
-                }
-            }
-            return "this email is not in our database. Register?";
+    public Admin login(String email, String password) throws Exception {
+        Admin admin = null;
+        if(loginDetailIsValid(email,password)){
+            admin = adminDao.findByEmailAndPassword(email,password);
         }
-        else return "error with login fields";
+        if(admin==null){
+            throw new Exception("Bad credentials");
+        }
+        return admin;
     }
 
-    public String register (Admin admin){
-        if(clientIsValid(admin)){
-            adminDao.save(admin);
-            return "successful registration";
+    public Admin register (Admin admin) throws Exception{
+        if (clientIsValid(admin)){
+            if(adminDao.findByEmail(admin.getEmail())!=null){
+                throw new Exception("admin with email "+admin.getEmail()+"already exists");
+            };
+            return adminDao.save(admin);
+        }else{
+            throw new Exception("Bad credentials");
         }
-        return "error with fields passed";
     }
 }

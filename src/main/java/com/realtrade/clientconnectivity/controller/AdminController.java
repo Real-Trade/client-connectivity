@@ -18,12 +18,12 @@ public class AdminController {
     String admin(){return "hello from admin";}
 
     @PostMapping("admin/register")
-    public String registerAdmin(@RequestBody Admin admin) {
+    public Admin registerAdmin(@RequestBody Admin admin)throws Exception {
         return adminDatabaseService.register(admin);
     }
 
     @PostMapping("admin/login")
-    public String loginClient(@RequestBody Admin admin) {
+    public Admin loginClient(@RequestBody Admin admin)throws Exception {
         return adminDatabaseService.login(admin.getEmail(),admin.getPassword());
     }
 }

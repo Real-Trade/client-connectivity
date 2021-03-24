@@ -2,22 +2,23 @@ package com.realtrade.clientconnectivity.dto;
 
 import javax.persistence.*;
     @Entity
-    @Table(name = "admin",schema = "realtrading")
+    @Table(name = "admin",schema = "public")
     public class Admin {
         @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name="adminid")
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        @Column(name="admin_id")
         private int id;
-        private  String firstname;
-        private String lastname;
+        private  String first_name;
+        private String last_name;
         private String email;
         private String password;
+        private int status;
 
         public String toString() {
             return "Admin{" +
                     "id=" + id +
-                    ", firstname='" + this.firstname + '\'' +
-                    ", lastname='" + this.lastname + '\'' +
+                    ", firstname='" + this.first_name + '\'' +
+                    ", lastname='" + this.last_name + '\'' +
                     ", email='" + this.email + '\'' +
                     ", password='" + this.password + '\'' +
                     '}';
@@ -32,19 +33,19 @@ import javax.persistence.*;
         }
 
         public String getFirstname() {
-            return firstname;
+            return first_name;
         }
 
         public void setFirstname(String firstname) {
-            this.firstname = firstname;
+            this.first_name = firstname;
         }
 
         public String getLastname() {
-            return lastname;
+            return last_name;
         }
 
         public void setLastname(String lastname) {
-            this.lastname = lastname;
+            this.last_name = lastname;
         }
 
         public String getEmail() {
