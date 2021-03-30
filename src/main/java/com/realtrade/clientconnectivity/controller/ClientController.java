@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins="*")
+@CrossOrigin
 //@CrossOrigin("http://localhost:4200")
 //@CrossOrigin(origins = "https://realtrading.herokuapp.com/",allowedHeaders = {})
 public class ClientController {
