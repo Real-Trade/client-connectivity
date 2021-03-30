@@ -1,4 +1,4 @@
-package com.realtrade.clientconnectivity.dto;
+package com.realtrade.clientconnectivity.models;
 
 import javax.persistence.*;
     @Entity

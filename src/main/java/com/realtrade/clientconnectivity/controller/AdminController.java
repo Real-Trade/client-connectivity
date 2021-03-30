@@ -1,6 +1,6 @@
 package com.realtrade.clientconnectivity.controller;
 
-import com.realtrade.clientconnectivity.dto.Admin;
+import com.realtrade.clientconnectivity.models.Admin;
 import com.realtrade.clientconnectivity.services.AdminDatabaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
