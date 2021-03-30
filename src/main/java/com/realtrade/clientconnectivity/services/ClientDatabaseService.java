@@ -1,40 +1,26 @@
 package com.realtrade.clientconnectivity.services;
 
+import com.realtrade.clientconnectivity.dao.AccountDao;
 import com.realtrade.clientconnectivity.dao.ClientDao;
-import com.realtrade.clientconnectivity.dto.Client;
+import com.realtrade.clientconnectivity.dao.PortfolioDao;
+import com.realtrade.clientconnectivity.models.Account;
+import com.realtrade.clientconnectivity.models.Client;
+import com.realtrade.clientconnectivity.models.Portfolio;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 import static com.realtrade.clientconnectivity.validations.Validations.*;
 
 @Service
 public class ClientDatabaseService {
-@Autowired
+ static int Balance= 10000;
+    @Autowired
     private ClientDao clientDao;
 
-// makes a call to the client repo passing in the email and returning a matching client
-//public String login(String email,String password){
-//    if (loginDetailIsValid(email,password) ){
-//        Client client = new Client();
-//        client =clientDao.findByEmail(email);
-//        //client email is in database
-//        if (client!= null){
-//            if (client.getPassword().equals(password)) {
-//                //TODO: consider implications of returning the object
-//                return "login successful";
-//            }else {
-//                return "invalid password";
-//            }
-//        }
-//        return "this email is not in our database. Register?";
-//    }
-//    else return "error with login fields";
-//}
+    @Autowired
+    private PortfolioDao portfolioDao;
 
+    @Autowired
+    private AccountDao accountDao;
 
     public Client login(String email,String password) throws Exception {
     Client client = null;
@@ -48,30 +34,30 @@ public class ClientDatabaseService {
     }
 
 
-public Client register (Client client) throws Exception{
+    public Client register (Client client) throws Exception{
     if (clientIsValid(client)){
        if(clientDao.findByEmail(client.getEmail())!=null){
            throw new Exception("user with email "+client.getEmail()+"already exists");
        };
         client.setStatus(0);
-        client.setAccountNumber(generateAccountNumber());
-        client.setCreated_at(setDate());
-        return clientDao.save(client);
+        Account account = new Account(Balance);
+        account.setClient(client);
+        Client client1  =clientDao.save(client);
+        accountDao.save(account);
+        return client1;
     }else{
-        System.out.println(client.toString());
         throw new Exception("Bad credentials");
     }
 }
 
-    private String setDate() {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
-        return dtf.format(now);
+    public Portfolio createPortfolio(Portfolio portfolio) throws Exception {
+    if(portfolioFieldIsValid(portfolio)){
+
+        return portfolioDao.save(portfolio);
+    }else{
+        throw new Exception("Bad fields");
+    }
     }
 
-    //logic to generate account number
-    int account =10000;
-private int generateAccountNumber(){
-  return   account++;
-}
+
 }
